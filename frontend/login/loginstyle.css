@@ -1,0 +1,59 @@
+    
+
+    /* Body styles */
+    body {
+      
+        /* Add the path to your background image */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Container styles */
+    .container {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+    }
+
+    /* Form styles */
+    form {
+        display: inline-block;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 300px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    input[type="button"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+        background-color: #45a049;
+    }
+
+    a {
+        color: #4CAF50;
+    }
+

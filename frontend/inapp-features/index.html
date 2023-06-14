@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expense Tracker</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="contaner" id="maindiv">
+                <form class="form" id="form">
+                    <label for="expense" class="form-label" id="label1">Expense Amount:</label>
+                    <input type="number" id="expense" required>
+                    <label for="description" id="label2">Choose Description:</label>
+                    <select id="description">
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                        <option>Movie</option>  
+                        <option>Restaurant</option>
+                        <option>Electricity Bill</option>
+                        <option>Water Bill</option>
+                        <option>WiFi Bill</option>
+                        <option>Alcohol</option>
+                        <option>Electronics</option>
+                    </select>
+                    <label for="category" id="label3">Choose a category:</label>
+                    <select id="category">
+                        <option>Fuel</option>
+                        <option>Food</option>
+                        <option>Utility</option>
+                        <option>Outing</option>
+                        <option>Other</option>
+                        <option>Entertainment</option>
+
+                    </select>
+                    <input type="submit" value="Add Expense" id="submit"><br><br>
+                    <ul class="list" id="list"></ul>
+                </form>
+                
+                <input type="submit" value="Buy Premium" id="payment">
+                <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                <ul id="list2"></ul>
+
+        </ul>
+    </div>
+    <script src="view.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+
+</html>
