@@ -3,16 +3,18 @@ const User=require('../model/user');
 
 const authenticate = (req,res,next)=>{
     try{
-        const token=req.header('Authorisation');
+        const token=req.header('Authorization');
         console.log(token)
         const user=jwt.verify(token,'my_secret_key');
-        console.log('userid===',user.userId)
+        console.log(user)
+        console.log('userid=======>>',user.userId)
         User.findByPk(user.userId).then(user=>{
-            req.user=user
+            req.user=user,
+            console.log(req.user)
             next();
         })
         .catch(err=>{
-            console.log(err)
+            console.log(err) 
         })
     }catch(err){
         console.log(err);
@@ -23,3 +25,4 @@ const authenticate = (req,res,next)=>{
 module.exports = {
   authenticate: authenticate
 };
+

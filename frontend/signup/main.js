@@ -19,7 +19,7 @@ function onsubmit(e){
     })
     .then(res=>{
         console.log(name)
-        console.log(eamil)
+        console.log(email)
         console.log(password)
        console.log(res)
     })

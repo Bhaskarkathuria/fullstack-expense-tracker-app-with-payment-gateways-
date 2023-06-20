@@ -9,10 +9,13 @@ const userRoutes=require('./routes/login')
 const expenseRoutes=require('./routes/expense')
 const premiumRoutes=require('./routes/premium')
 const transactionStatusRoutes=require('./routes/transactionStatus')
+const premiumfeaturesRoutes=require('./routes/premiumfeatures')
+
 
 const userinfo=require('./model/user')
 const expense=require('./model/expensemodel')
 const orders=require('./model/orders')
+
 
 
 
@@ -30,6 +33,8 @@ app.use('/login',userRoutes)
 app.use('/expenses',expenseRoutes)
 app.use('/purchasePremium',premiumRoutes)
 app.use('/trasactionstatus',transactionStatusRoutes)
+app.use('/premiumfeatures',premiumfeaturesRoutes)
+
 
 
 userinfo.hasMany(expense);
@@ -40,7 +45,7 @@ orders.belongsTo(userinfo);
 
 sequelize
  .sync()
-//   .sync({force: true})
+//  .sync({force: true})
   .then((res) => {
     // const hostname = "127.0.0.1";
     // const port = 5000;
