@@ -19,8 +19,10 @@ router.post("/", userAuthentication.authenticate, async(req, res, next) => {
     transaction:t
   })
     .then((result) => {;
+
+      
      
-      const totalexpense =
+      const totalexpense = 
       parseInt(User2.rawAttributes.totalexpense.defaultValue) +
       parseInt(result.dataValues.amount);
       console.log(totalexpense);
@@ -59,10 +61,10 @@ router.post("/", userAuthentication.authenticate, async(req, res, next) => {
 });
 
 router.get("/", userAuthentication.authenticate, (req, res, next) => {
-  console.log(req.user);
+  //console.log(req.user);
   User.findAll({ where: { userInfoId: req.user.id } })
     .then((result) => {
-      console.log(result);
+     // console.log(result);
       res.status(200).json(result);
     })
     .catch((error) => {
@@ -71,17 +73,27 @@ router.get("/", userAuthentication.authenticate, (req, res, next) => {
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", userAuthentication.authenticate, (req, res, next) => {
 
   const prodid = req.params.id;
   User.findByPk(prodid)
     .then((product) => {
      // console.log("PRODUCT====>>>>>", product);
       //console.log("DELETED AMOUNT======>>>>>",product.amount)
-       
-      User2.update({
-        totalexpense:totalexpense-product.amount
-      })
+      const response=User2.findByPk(product.id);
+      if(response){
+        User2.update(
+          {
+            totalexpense:
+              parseInt(User2.rawAttributes.totalexpense.defaultValue) -
+              parseInt(product.amount),
+          },
+          {
+            where: { id: req.user.id },
+          }
+        );
+      }
+      
       return product
         .destroy()
         .then((result) => {

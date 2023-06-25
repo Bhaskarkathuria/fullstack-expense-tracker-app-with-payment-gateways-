@@ -10,25 +10,6 @@ const leaderboard = document.getElementById("premiumfeature");
 submit.addEventListener("click", onsubmit);
 list.addEventListener("click", deletelist);
 payment.addEventListener("click", getpayment);
-// leaderboard.addEventListener('click', (e)=>{
-//     e.preventDefault();
-//     const token=localStorage.getItem('token');
-//     axios.get('http://localhost:5000/premiumfeatures',{headers:{"Authorization":token}})
-//     .then((response)=>{
-//         const leaderboard_data=response.data
-//         const leaderboardexpenselist=document.getElementById('leaderboardexpenselist')
-
-//         leaderboard_data.forEach((user)=>{
-//             const listitem=document.createElement('li')
-//             listitem.appendChild(document.createTextNode(`Name:${user.data.name} totalExpense${user.data.totalexpense}`))
-
-//             leaderboardexpenselist.appendChild(listitem)
-//         })
-//     })
-//     .catch(err=>{
-//         console.log(err)
-//     })
-// });
 
 function onsubmit(e) {
   e.preventDefault();
@@ -80,8 +61,11 @@ function deletelist(e) {
   }
   console.log(e.target.parentElement.id);
 
+  const token = localStorage.getItem("token");
   axios
-    .delete(`http://localhost:5000/expenses/${e.target.parentElement.id}`)
+    .delete(`http://localhost:5000/expenses/${e.target.parentElement.id}`, {
+      headers: { Authorization: token },
+    })
     .then((res) => {
       console.log(res);
     })
@@ -242,6 +226,7 @@ function getpayment(e) {
 
               const exclusive = document.getElementById("premium");
               exclusive.appendChild(leaderboard);
+              localStorage.setItem("token", newToken);
             })
             .catch((error) => {
               console.log(error);
@@ -259,3 +244,6 @@ function getpayment(e) {
       });
     });
 }
+
+
+ 
